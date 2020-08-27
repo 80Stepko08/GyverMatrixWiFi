@@ -158,6 +158,10 @@ void customModes(byte aMode) {
     case DEMO_FILL_COLOR:          fillColorProcedure(); break;
     case DEMO_LIGHTERS:            lightersRoutine(); break;
     case DEMO_PAINTBALL:           lightBallsRoutine(); break;
+    case DEMO_PRISMATA:            PrismataRoutine(); break;
+    case DEMO_MUNCH:               MunchRoutine();break;
+    case DEMO_METABALLS:           MetaBallsRoutine();break;
+    case DEMO_SINUSOID:            Sinusoid3Routine();break;
     case DEMO_SWIRL:               swirlRoutine(); break;
 
     case DEMO_ANIMATION_1:         animation(1); break;

@@ -428,6 +428,10 @@ byte overlayList[] = {
   MC_METABALLS,
   MC_SINUSOID,
   MC_LIGHTERS,
+  MC_PRISMATA            
+  MC_MUNCH                
+  MC_METABALLS            
+  MC_SINUSOID  
   MC_DAWN_ALARM,
   MC_FILL_COLOR,
 };

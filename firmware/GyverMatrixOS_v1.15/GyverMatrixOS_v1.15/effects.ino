@@ -993,7 +993,7 @@ void MunchRoutine() {
    }
   for (byte x = 0; x < WIDTH; x++) {
     for (byte y = 0; y < HEIGHT; y++) {
-      leds[XY(x, y)] = (x ^ y ^ flip) < count ? ColorFromPalette(RainbowStripeColors_p, ((x ^ y) << 4) + generation) : CRGB::Black;
+      leds[XY(x, y)] = (x ^ y ^ flip) < count ? ColorFromPalette(RainbowColors_p, ((x ^ y) << 4) + generation) : CRGB::Black;
     }
   }
 
