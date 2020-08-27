@@ -481,6 +481,10 @@ byte mapEffectToModeCode(byte effect) {
     case EFFECT_PAINTBALL:           tmp_mode = MC_PAINTBALL; break;            // lightBallsRoutine()
     case EFFECT_SWIRL:               tmp_mode = MC_SWIRL; break;                // swirlRoutine()
     case EFFECT_LIGHTERS:            tmp_mode = MC_LIGHTERS; break;             // lightersRoutine()
+    case EFFECT_PRISMATA             tmp_mode = MC_PRISMATA; break;
+    case EFFECT_MUNCH                tmp_mode = MC_MUNCH; break;
+    case EFFECT_METABALLS            tmp_mode = MC_METABALLS; break;
+    case EFFECT_SINUSOID             tmp_mode = MC_SINUSOID; break;
     case EFFECT_ANIMATION_1:         tmp_mode = MC_IMAGE; break;                // animation(1);
     /*
     case EFFECT_ANIMATION_2:         tmp_mode = MC_IMAGE; break;                // animation(2);
@@ -536,6 +540,10 @@ byte mapModeToEffect(byte aMode) {
     case DEMO_FILL_COLOR:           tmp_effect = EFFECT_FILL_COLOR; break;          // fillColorProcedure();
     case DEMO_PAINTBALL:            tmp_effect = EFFECT_PAINTBALL;  break;          // lightBallsRoutine()
     case DEMO_SWIRL:                tmp_effect = EFFECT_SWIRL; break;               // swirlRoutine()
+    case DEMO_PRISMATA:             tmp_effect = EFFECT_PRISMATA;(); break;
+    case DEMO_MUNCH:                tmp_effect = EFFECT_MUNCH;break;
+    case DEMO_METABALLS:            tmp_effect = EFFECT_METABALLS;break;
+    case DEMO_SINUSOID:             tmp_effect = EFFECT_SINUSOID;break;
     case DEMO_LIGHTERS:             tmp_effect = EFFECT_LIGHTERS;  break;           // lightersRoutine()
     
     case DEMO_ANIMATION_1:          tmp_effect = EFFECT_ANIMATION_1; break;         // animation(1);
@@ -584,8 +592,13 @@ byte mapModeToGame(byte aMode) {
     case DEMO_DAWN_ALARM:           break;       // dawnProcedure(); 
     case DEMO_FILL_COLOR:           break;       // fillColorProcedure(); 
     case DEMO_PAINTBALL:            break;       // lightBallsRoutine()
+    case DEMO_PRISMATA:             break;
+    case DEMO_MUNCH:                break;
+    case DEMO_METABALLS:            break;
+    case DEMO_SINUSOID:             break;
     case DEMO_SWIRL:                break;       // swirlRoutine()
-    case DEMO_LIGHTERS:             break;       // lightersRoutine()
+    case DEMO_LIGHTERS:             break;
+    
     case DEMO_ANIMATION_1:          break;       // animation(1);
     /*
     case DEMO_ANIMATION_2:          break;       // animation(2);
