@@ -2313,7 +2313,7 @@ uint8_t wrapY(int8_t y) {
   return (y + HEIGHT) % HEIGHT;
 }
 void fire2012again()
-{
+{modeCode=MC_FIRE_2012
   if (loadingFlag)
   {
     loadingFlag = false;
