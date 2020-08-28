@@ -2123,8 +2123,8 @@ void WaveRoutine() {
      
       waveRotation = random(0, 4);// теперь вместо этого регулятор Масштаб
       //waveRotation = (modes[currentMode].Scale - 1) / 25U;
-      //waveCount = random(1, 3);// теперь вместо этого чётное/нечётное у регулятора Скорость
-      waveCount = effectSpeed % 2;
+      waveCount = random(1, 2);// теперь вместо этого чётное/нечётное у регулятора Скорость
+      //waveCount = effectSpeed % 2;
       //waveThetaUpdateFrequency = random(1, 2);
       //hueUpdateFrequency = random(1, 6);      
     }
