@@ -163,6 +163,7 @@ void customModes(byte aMode) {
     case DEMO_METABALLS:           MetaBallsRoutine();break;
     case DEMO_SINUSOID:            Sinusoid3Routine();break;
     case DEMO_FIRE_2012:           fire2012again();break;
+    case DEMO_R_SNAKE:             MultipleStream8();break;
     case DEMO_SWIRL:               swirlRoutine(); break;
 
     case DEMO_ANIMATION_1:         animation(1); break;
@@ -447,6 +448,7 @@ byte mapEffectToMode(byte effect) {
     case EFFECT_METABALLS:           tmp_mode = DEMO_METABALLS;break;
     case EFFECT_SINUSOID:            tmp_mode = DEMO_SINUSOID;break;
     case EFFECT_FIRE_2012:           tmp_mode = DEMO_FIRE_2012;break;
+        case EFFECT_R_SNAKE:           tmp_mode = DEMO_R_SNAKE;break;
     case EFFECT_DAWN_ALARM:          tmp_mode = DEMO_DAWN_ALARM; break;           // dawnProcedure();
     case EFFECT_FILL_COLOR:          tmp_mode = DEMO_FILL_COLOR; break;           // fillColorProcedure();
     case EFFECT_ANIMATION_1:         tmp_mode = DEMO_ANIMATION_1; break;          // animation(1);
@@ -492,6 +494,7 @@ byte mapEffectToModeCode(byte effect) {
     case EFFECT_METABALLS:            tmp_mode = MC_METABALLS; break;
     case EFFECT_SINUSOID:             tmp_mode = MC_SINUSOID; break;
     case EFFECT_FIRE_2012:             tmp_mode = MC_FIRE_2012;break;
+    case EFFECT_R_SNAKE:             tmp_mode = MC_R_SNAKE;break;
     case EFFECT_ANIMATION_1:         tmp_mode = MC_IMAGE; break;                // animation(1);
     /*
     case EFFECT_ANIMATION_2:         tmp_mode = MC_IMAGE; break;                // animation(2);
@@ -552,6 +555,7 @@ byte mapModeToEffect(byte aMode) {
     case DEMO_METABALLS:            tmp_effect = EFFECT_METABALLS;break;
     case DEMO_SINUSOID:             tmp_effect = EFFECT_SINUSOID;break;
     case DEMO_FIRE_2012:            tmp_effect = EFFECT_FIRE_2012;break;
+    case DEMO_R_SNAKE:              tmp_effect = EFFECT_R_SNAKE;break;
     case DEMO_LIGHTERS:             tmp_effect = EFFECT_LIGHTERS;  break;           // lightersRoutine()
     
     case DEMO_ANIMATION_1:          tmp_effect = EFFECT_ANIMATION_1; break;         // animation(1);
@@ -605,6 +609,7 @@ byte mapModeToGame(byte aMode) {
     case DEMO_METABALLS:            break;
     case DEMO_SINUSOID:             break;
     case DEMO_FIRE_2012:            break;
+    case DEMO_R_SNAKE:              break;
     case DEMO_SWIRL:                break;       // swirlRoutine()
     case DEMO_LIGHTERS:             break;
     

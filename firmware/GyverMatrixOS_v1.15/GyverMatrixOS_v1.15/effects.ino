@@ -8,7 +8,7 @@
 #define TRACK_STEP 70     // длина хвоста шарика (чем больше цифра, тем хвост короче)
 
 // эффект "квадратик"
-#define BALL_SIZE 3       // размер квадрата
+#define BALL_SIZE 2       // размер квадрата
 #define RANDOM_COLOR 1    // случайный цвет при отскоке
 
 // эффект "огонь"
@@ -1342,14 +1342,15 @@ void MultipleStream4() { // Comet
 }
 
 void MultipleStream8() { // Windows ))
+  modeCode = MC_R_SNAKE;
   dimAll(96); // < -- затухание эффекта для последующего кадрв на 96/255*100=37%
-  //dimAll(255U - modes[currentMode].Scale * 2); // так какая-то хрень получается
   for (uint8_t y = 2; y < HEIGHT; y += 5) {
     for (uint8_t x = 2; x < WIDTH; x += 5) {
-      leds[XY(x, y)]  += CHSV(x * y , 255, 255);
-      leds[XY(x + 1, y)] += CHSV((x + 4) * y, 255, 255);
-      leds[XY(x, y + 1)] += CHSV(x * (y + 4), 255, 255);
-      leds[XY(x + 1, y + 1)] += CHSV((x + 4) * (y + 4), 255, 255);
+      drawPixelXY(x, y ,CHSV(hue + x * y , 255, 255));
+      drawPixelXY(x + 1, y, CHSV(hue + (x + 4) * y, 255, 255));
+      drawPixelXY(x, y + 1,CHSV(hue + x * (y + 4), 255, 255));
+      drawPixelXY(x + 1, y + 1, CHSV(hue + (x + 4) * (y + 4), 255, 255));
+      hue++;
     }
   }
   // Noise
@@ -1366,9 +1367,7 @@ void MultipleStream8() { // Windows ))
 
 // прописывается, если ранее нигде не была объявлена (это часто используемая функция у эффектов Stefan Petrick)
 void dimAll(uint8_t value) {
-  for (uint16_t i = 0; i < NUM_LEDS; i++) {
-    leds[i].nscale8(value); //fadeToBlackBy
-  }
+  fadeToBlackBy (leds, NUM_LEDS, 255U - value);  
 }
 
 //  Follow the Rainbow Comet by Palpalych (Effect for GyverLamp 02/03/2020) //
@@ -2259,7 +2258,7 @@ void radarRoutine() {
     CRGB color = ColorFromPalette(RainbowColors_p, hue);
     uint8_t x = mapcos8(theta, offset, (WIDTH - 1) - offset);
     uint8_t y = mapsin8(theta, offset, (HEIGHT - 1) - offset);
-    leds[XY(x, y)] = color;
+    drawPixelXY(x, y, color);
 
     EVERY_N_MILLIS(25) {
       theta += 2;
@@ -2313,9 +2312,9 @@ uint8_t wrapY(int8_t y) {
   return (y + HEIGHT) % HEIGHT;
 }
 void fire2012again()
-{modeCode=MC_FIRE_2012
+{
   if (loadingFlag)
-  {
+  {modeCode=MC_FIRE_2012;
     loadingFlag = false;
   }
   
