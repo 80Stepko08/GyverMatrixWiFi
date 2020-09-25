@@ -31,7 +31,7 @@
 #define LIGHTERS_AM 35    // количество светляков
 
 // эффект "Синусоид"
-#define AMPLITUDE 255 
+#define AMPLITUDE 1 
 
 // эффекты "Тучка" и "Гроза"
 #define intensity 42   // интесивность
@@ -989,7 +989,7 @@ byte generation = 0;
 void MunchRoutine() {
   if (loadingFlag) {
     loadingFlag = false;
-    modeCode = MC_MUNCH;
+    //modeCode = MC_MUNCH;
    }
   for (byte x = 0; x < WIDTH; x++) {
     for (byte y = 0; y < HEIGHT; y++) {
@@ -1070,7 +1070,7 @@ void MetaBallsRoutine() {
 void Sinusoid3Routine()
 {if (loadingFlag) {
     loadingFlag = false;
-    //modeCode = MC_SINUSOID;
+    modeCode = MC_SINUSOID;
    }
   const uint8_t semiHeightMajor =  HEIGHT / 2 + (HEIGHT % 2);
   const uint8_t semiWidthMajor =  WIDTH / 2  + (WIDTH % 2) ;
@@ -2117,7 +2117,7 @@ void whirlRoutine(bool oneColor) {
 
 void WaveRoutine() {
     if (loadingFlag)
-    {
+    {modeCode = MC_WAVES;
       loadingFlag = false;
      
       waveRotation = random(0, 4);// теперь вместо этого регулятор Масштаб

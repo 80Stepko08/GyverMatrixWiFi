@@ -165,8 +165,8 @@ byte IP_STA[] = {192, 168, 0, 106};          // Статический адре�
 // Список и порядок эффектов и игр, передаваймый в приложение на смартфоне. Данные списки попадают в комбобокс выбора,
 // чей индекс передается из приложения в контроллер матрицы для выбора, поэтому порядок должен соответствовать
 // спискам эффектов и игр, определенному ниже в DEMO_XXXXXX
-#define EFFECT_LIST F("Снегопад,Шарик,Радуга,Пейнтбол,Огонь,The Matrix,Шарики,Часы,Звездопад,Конфетти,Радуга диагональная,Цветной шум,Облака,Лава,Плазма,Радужные переливы,Полосатые переливы,Зебра,Шумящий лес,Морской прибой,Светлячки,Водоворот,Синусы,Волны,МетаБолз,Водопад,Пожар,Радужный змей,Лампа,Рассвет,Анимация") /* 1,Анимация 2,Анимация 3,Анимация 4,Анимация 5*/
-#define ALARM_LIST  F("Снегопад,Шарик,Радуга,Пейнтбол,Огонь,The Matrix,Шарики,Звездопад,Конфетти,Радуга диагональная,Цветной шум,Облака,Лава,Плазма,Радужные переливы,Полосатые переливы,Зебра,Шумящий лес,Морской прибой,Светлячки,Водоворот,Синусы,Волны,МетаБолз,Водопад,Пожар,Радужный змей,Рассвет,Анимация") /* 1,Анимация 2,Анимация 3,Анимация 4,Анимация 5*/
+#define EFFECT_LIST F("Снегопад,Шарик,Радуга,Пейнтбол,Огонь,The Matrix,Шарики,Часы,Звездопад,Конфетти,Радуга диагональная,Цветной шум,Облака,Лава,Плазма,Радужные переливы,Полосатые переливы,Зебра,Шумящий лес,Морской прибой,Светлячки,Водоворот,Синусы,Вышиванка,МетаБолз,Водопад,Пожар,Радужный змей,Круги,Лампа,Рассвет,Анимация") /* 1,Анимация 2,Анимация 3,Анимация 4,Анимация 5*/
+#define ALARM_LIST  F("Снегопад,Шарик,Радуга,Пейнтбол,Огонь,The Matrix,Шарики,Звездопад,Конфетти,Радуга диагональная,Цветной шум,Облака,Лава,Плазма,Радужные переливы,Полосатые переливы,Зебра,Шумящий лес,Морской прибой,Светлячки,Водоворот,Синусы,Вышиванка,МетаБолз,Синусоид,Пожар,Радужный змей,Круги,Рассвет,Анимация") /* 1,Анимация 2,Анимация 3,Анимация 4,Анимация 5*/
 #define GAME_LIST   F("Змейка,Тетрис,Лабиринт,Runner,Арканоид")
 
 #if (USE_MP3 == 1)
@@ -293,21 +293,22 @@ bool useRandomSequence = true;   // Использовать случайный 
 #define DEMO_PAINTBALL          22
 #define DEMO_SWIRL              23
 #define DEMO_PRISMATA           24
-#define DEMO_MUNCH              25
+#define DEMO_WAVES              25
 #define DEMO_METABALLS          26
-#define DEMO_WATERFALL           27
+#define DEMO_WATERFALL          27
 #define DEMO_FIRE_2012          28
 #define DEMO_R_SNAKE            29
-#define DEMO_SNAKE              30
-#define DEMO_TETRIS             31
-#define DEMO_MAZE               32
-#define DEMO_RUNNER             33
-#define DEMO_ARKANOID           34
-#define DEMO_CLOCK              35
-#define DEMO_FILL_COLOR         36  // Заливка матрицы одним цветом
-#define DEMO_DAWN_ALARM         37  // Режим эффекта будильника "Рассвет"
+#define DEMO_SINUSOID           30
+#define DEMO_SNAKE              31
+#define DEMO_TETRIS             32
+#define DEMO_MAZE               33
+#define DEMO_RUNNER             34
+#define DEMO_ARKANOID           35
+#define DEMO_CLOCK              36
+#define DEMO_FILL_COLOR         37  // Заливка матрицы одним цветом
+#define DEMO_DAWN_ALARM         38  // Режим эффекта будильника "Рассвет"
 // ---------------------------------
-#define DEMO_ANIMATION_1        38
+#define DEMO_ANIMATION_1        39
 //#define DEMO_ANIMATION_2        33
 //#define DEMO_ANIMATION_3        34
 //#define DEMO_ANIMATION_4        35
@@ -315,7 +316,7 @@ bool useRandomSequence = true;   // Использовать случайный 
 
 // не забудьте указать количество режимов для корректного переключения с последнего на первый
 // количество кастомных режимов (которые переключаются сами или кнопкой)
-#define MODES_AMOUNT 39 // 37
+#define MODES_AMOUNT 40 // 37
 
 // ---------------------------------
 #define DEMO_DAWN_ALARM_SPIRAL 253  // Специальный режим, вызывается из DEMO_DAWN_ALARM для ламп на круговой матрице - огонек по спирали
@@ -346,20 +347,21 @@ bool useRandomSequence = true;   // Использовать случайный 
 #define EFFECT_LIGHTERS            20
 #define EFFECT_SWIRL               21
 #define EFFECT_PRISMATA            22
-#define EFFECT_MUNCH               23
+#define EFFECT_WAVES               23
 #define EFFECT_METABALLS           24
 #define EFFECT_WATERFALL           25
 #define EFFECT_FIRE_2012           26
 #define EFFECT_R_SNAKE             27
-#define EFFECT_FILL_COLOR          28
-#define EFFECT_DAWN_ALARM          29
-#define EFFECT_ANIMATION_1         30
+#define EFFECT_SINUSOID            28
+#define EFFECT_FILL_COLOR          29
+#define EFFECT_DAWN_ALARM          30
+#define EFFECT_ANIMATION_1         31
 //#define EFFECT_ANIMATION_2         25
 //#define EFFECT_ANIMATION_3         26
 //#define EFFECT_ANIMATION_4         27
 //#define EFFECT_ANIMATION_5         28
 
-#define MAX_EFFECT                 31 // 29 // количество эффектов, определенных в прошивке
+#define MAX_EFFECT                 32 // 29 // количество эффектов, определенных в прошивке
 #define MAX_SPEC_EFFECT            10       // количество эффектов быстрого доступа -> 0..9
 
 // Сквозная нумерация (ID) игр в группе игр
@@ -400,11 +402,12 @@ bool useRandomSequence = true;   // Использовать случайный 
 #define MC_SWIRL                25
 #define MC_LIGHTERS             26
 #define MC_PRISMATA             27
-#define MC_MUNCH                28
+#define MC_WAVES                28
 #define MC_METABALLS            29
-#define MC_WATERFALL             30
+#define MC_WATERFALL            30
 #define MC_FIRE_2012            31
 #define MC_R_SNAKE              32
+#define MC_SINUSOID             33
 
 // Типы эффектов (см. выше), в которых могут отображаться часы в наложении
 #if (OVERLAY_CLOCK == 1)
@@ -430,11 +433,12 @@ byte overlayList[] = {
   MC_PAINTBALL,
   MC_SWIRL,
   MC_PRISMATA,
-  MC_MUNCH,
+  MC_WAVES,
   MC_METABALLS,
   MC_WATERFALL,
   MC_FIRE_2012,
   MC_R_SNAKE,
+  MC_SINUSOID,
   MC_LIGHTERS,  
   MC_DAWN_ALARM,
   MC_FILL_COLOR,
@@ -448,7 +452,7 @@ const byte ALARM_LIST_IDX[] PROGMEM = {EFFECT_SNOW, EFFECT_BALL, EFFECT_RAINBOW,
                                        EFFECT_STARFALL, EFFECT_SPARKLES, EFFECT_RAINBOW_DIAG, EFFECT_NOISE_MADNESS, EFFECT_NOISE_CLOUD,
                                        EFFECT_NOISE_LAVA, EFFECT_NOISE_PLASMA, EFFECT_NOISE_RAINBOW, EFFECT_NOISE_RAINBOW_STRIP,
                                        EFFECT_NOISE_ZEBRA, EFFECT_NOISE_FOREST, EFFECT_NOISE_OCEAN, EFFECT_LIGHTERS, EFFECT_SWIRL,
-                                       EFFECT_PRISMATA, EFFECT_MUNCH, EFFECT_METABALLS, EFFECT_WATERFALL, EFFECT_FIRE_2012,EFFECT_R_SNAKE, EFFECT_DAWN_ALARM, EFFECT_ANIMATION_1
+                                       EFFECT_PRISMATA, EFFECT_WAVES, EFFECT_METABALLS, EFFECT_WATERFALL, EFFECT_FIRE_2012, EFFECT_R_SNAKE, EFFECT_SINUSOID, EFFECT_DAWN_ALARM, EFFECT_ANIMATION_1
                                        //, EFFECT_ANIMATION_2, EFFECT_ANIMATION_3, EFFECT_ANIMATION_4, EFFECT_ANIMATION_5
                                       };
 
