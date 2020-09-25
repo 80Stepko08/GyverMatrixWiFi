@@ -31,7 +31,7 @@
 #define LIGHTERS_AM 35    // количество светляков
 
 // эффект "Синусоид"
-#define AMPLITUDE 1 
+#define AMPLITUDE 255 
 
 // эффекты "Тучка" и "Гроза"
 #define intensity 42   // интесивность
