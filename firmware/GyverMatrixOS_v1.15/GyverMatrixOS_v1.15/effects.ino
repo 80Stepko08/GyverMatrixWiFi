@@ -989,7 +989,7 @@ byte generation = 0;
 void MunchRoutine() {
   if (loadingFlag) {
     loadingFlag = false;
-    modeCode = MC_MUNCH;
+    //modeCode = MC_MUNCH;
    }
   for (byte x = 0; x < WIDTH; x++) {
     for (byte y = 0; y < HEIGHT; y++) {
@@ -1070,7 +1070,7 @@ void MetaBallsRoutine() {
 void Sinusoid3Routine()
 {if (loadingFlag) {
     loadingFlag = false;
-    modeCode = MC_SINUSOID;
+    //modeCode = MC_SINUSOID;
    }
   const uint8_t semiHeightMajor =  HEIGHT / 2 + (HEIGHT % 2);
   const uint8_t semiWidthMajor =  WIDTH / 2  + (WIDTH % 2) ;
@@ -2117,7 +2117,7 @@ void whirlRoutine(bool oneColor) {
 
 void WaveRoutine() {
     if (loadingFlag)
-    {
+    {modeCode = MC_WAVES;
       loadingFlag = false;
      
       waveRotation = random(0, 4);// теперь вместо этого регулятор Масштаб
@@ -2271,7 +2271,9 @@ void radarRoutine() {
 #define COOLINGNEW 32
 #define SPARKINGNEW 80
   extern const TProgmemRGBPalette16 WaterfallColors_p FL_PROGMEM = {0x000000, 0x060707, 0x101110, 0x151717, 0x1C1D22, 0x242A28, 0x363B3A, 0x313634, 0x505552, 0x6B6C70, 0x98A4A1, 0xC1C2C1, 0xCACECF, 0xCDDEDD, 0xDEDFE0, 0xB2BAB9};
-void fire2012WithPalette() {
+void waterFallRoutine() {
+  modeCode = MC_WATERFALL;
+  
   //    bool fire_water = modes[currentMode].Scale <= 50;
   //    uint8_t COOLINGNEW = fire_water ? modes[currentMode].Scale * 2  + 20 : (100 - modes[currentMode].Scale ) *  2 + 20 ;
   //    uint8_t COOLINGNEW = modes[currentMode].Scale * 2  + 20 ;
