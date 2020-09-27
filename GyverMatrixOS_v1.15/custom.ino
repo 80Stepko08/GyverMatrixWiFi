@@ -161,8 +161,8 @@ void customModes(byte aMode) {
     case DEMO_PRISMATA:            PrismataRoutine(); break;
     case DEMO_WAVES:               WaveRoutine();break;
     case DEMO_METABALLS:           MetaBallsRoutine();break;
-    case DEMO_WATERFALL:           waterFallRoutine();break;
-    case DEMO_FIRE_2012:           fire2012again();break;
+    case DEMO_WATERFALL:           MultipleStream2();break;
+    case DEMO_FIRE_2012:           Fire2020();break;
     case DEMO_R_SNAKE:             MultipleStream8();break;
     case DEMO_SINUSOID:            Sinusoid3Routine();break;
     case DEMO_SWIRL:               swirlRoutine(); break;
@@ -304,6 +304,11 @@ void setTimersForMode(byte aMode) {
   else if (aMode == DEMO_SINUSOID) {
     // Это эффект Круги
     effectSpeed = getEffectSpeed(EFFECT_SINUSOID);      // 
+    effectTimer.setInterval(10);                     // Этот эффект работает только на высокой скорости
+  } 
+  else if (aMode == DEMO_FIRE_2012) {
+    // Это эффект Огонь
+    effectSpeed = getEffectSpeed(EFFECT_FIRE_2012);      // 
     effectTimer.setInterval(10);                     // Этот эффект работает только на высокой скорости
   } 
   /*

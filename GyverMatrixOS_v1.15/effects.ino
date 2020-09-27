@@ -14,6 +14,7 @@
 // эффект "огонь"
 #define SPARKLES 1        // вылетающие угольки вкл выкл
 #define HUE_ADD 0         // добавка цвета в огонь (от 0 до 230) - меняет весь цвет пламени
+#define FSCALE 1          //Пожар - масштаб
 
 // эффект "кометы"
 #define TAIL_STEP 100     // длина хвоста кометы
@@ -981,37 +982,7 @@ void PrismataRoutine() {
   }
 }
 
-//-----------------Эффект Вышиванка-------------
-byte count = 0;
 
-byte flip = 0;
-byte generation = 0;
-void MunchRoutine() {
-  if (loadingFlag) {
-    loadingFlag = false;
-    //modeCode = MC_MUNCH;
-   }
-  for (byte x = 0; x < WIDTH; x++) {
-    for (byte y = 0; y < HEIGHT; y++) {
-      leds[XY(x, y)] = (x ^ y ^ flip) < count ? ColorFromPalette(RainbowColors_p, ((x ^ y) << 4) + generation) : CRGB::Black;
-    }
-  }
-
-  count += dir;
-
-  if (count <= 0 || count >= WIDTH) {
-    dir = -dir;
-  }
-
-  if (count <= 0) {
-    if (flip == 0)
-      flip = 7;
-    else
-      flip = 0;
-  }
-
-  generation++;
-}
 //-------------------------Метаболз-------------------
 void MetaBallsRoutine() {
   if (loadingFlag) {
@@ -1058,10 +1029,8 @@ void MetaBallsRoutine() {
       if (color > 0 && color < 60) {
           drawPixelXY(x, y, CHSV(color * 9, 255, 255));// это оригинальный цвет эффекта
       }
-      // show the 3 points, too
-      drawPixelXY(x1, y1, CRGB(255, 255, 255));
-      drawPixelXY(x2, y2, CRGB(255, 255, 255));
-      drawPixelXY(x3, y3, CRGB(255, 255, 255));
+     
+  
     }
   }
 }
@@ -1077,7 +1046,7 @@ void Sinusoid3Routine()
   float e_s3_speed = 0.004 * effectSpeed + 0.015; // speed of the movement along the Lissajous curves
   float e_s3_size = 3 * (float)AMPLITUDE /100.0 + 2;    // amplitude of the curves
 
-  float time_shift = float(millis()%(uint32_t)(30000*(1.0/((float)effectSpeed/255))));
+  float time_shift = float(millis()%(uint32_t)(30000*(1.0/(255-(float)effectSpeed))));
 
   CRGB color;
   for (uint8_t y = 0; y < HEIGHT; y++) {
@@ -1264,7 +1233,7 @@ if (xx < WIDTH && yy < HEIGHT)
 void MultipleStream2() { // 3 comets
   dimAll(220); // < -- затухание эффекта для последующего кадрв
   //dimAll(255U - modes[currentMode].Scale * 2);
-
+  modeCode = MC_WATERFALL;
   byte xx = 2 + sin8( millis() / 10) / 22;
   byte yy = 2 + cos8( millis() / 9) / 22;
 if (xx < WIDTH && yy < HEIGHT)
@@ -2528,4 +2497,19 @@ void stormyRain()
   // ( Depth of dots, maximum brightness, frequency of new dots, length of tails, color, splashes, clouds, ligthening )
   rain(0, 90, map8(intensity,0,150)+60, 10, solidRainColor, true, true, true);
   //rain(60, 160, (modes[currentMode].Scale-1) * 2.58, 30, solidRainColor, true, true, true);
+}
+void Fire2020() {
+  modeCode=MC_FIRE_2012;
+  //CRGBPalette16 myPal = firepal;
+  uint8_t speedy = map(effectSpeed, 1, 255, 255, 0);
+  uint32_t a = millis();
+  for (byte i = 0U; i < WIDTH; i++) {
+    for (float j = 0.; j < HEIGHT; j++) {
+      //leds[XY((LED_COLS - 1) - i, (LED_ROWS - 1) - j)] = ColorFromPalette(*curPalette/*myPal*/, qsub8(inoise8(i * scale, j * scale + a, a / speed), abs8(j - (LED_ROWS - 1)) * 255 / (LED_ROWS - 1)), 255);
+//      if(curPalette!=palettes.at(10))
+        drawPixelXY((WIDTH - 1) - i, (HEIGHT - 1) - j, ColorFromPalette(HeatColors_p/*myPal*/, qsub8(inoise8(i * FSCALE, j * FSCALE + a, a / speedy), abs8(j - (HEIGHT - 1)) * 255 / (HEIGHT - 1)), 255));
+//      else
+//        myLamp.drawPixelXYF_Y((LED_COLS - 1) - i, (float)(LED_ROWS - 1) - j, ColorFromPalette(HeatColors2_p/*myPal*/, qsub8(inoise8(i * _scale, j * _scale + a, a / speedy), abs8(j - (LED_ROWS - 1)) * 255 / (LED_ROWS - 1)), 255));
+    }
+  }
 }
