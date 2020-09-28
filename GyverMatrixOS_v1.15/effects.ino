@@ -14,7 +14,7 @@
 // эффект "огонь"
 #define SPARKLES 1        // вылетающие угольки вкл выкл
 #define HUE_ADD 0         // добавка цвета в огонь (от 0 до 230) - меняет весь цвет пламени
-#define FSCALE 1          //Пожар - масштаб
+#define FSCALE 130          //Пожар - масштаб
 
 // эффект "кометы"
 #define TAIL_STEP 100     // длина хвоста кометы
@@ -970,12 +970,12 @@ void PrismataRoutine() {
   }
   FastLED.clear();
 
-  for (uint8_t x = 0; x < WIDTH; x++)
+  for (uint8_t y = 0; y < HEIGHT; y++)
   {
     //uint8_t y = beatsin8(x + 1, 0, HEIGHT-1); // это я попытался распотрошить данную функцию до исходного кода и вставить в неё регулятор скорости
     // вместо 28 в оригинале было 280, умножения на .Speed не было, а вместо >>17 было (<<8)>>24. короче, оригинальная скорость достигается при бегунке .Speed=20
-    uint8_t beat = (GET_MILLIS() * (accum88(x + 1)) * 28 * effectSpeed >> 17);
-    uint8_t y = scale8(sin8(beat), HEIGHT - 1);
+    uint8_t beat = (GET_MILLIS() * (accum88(y + 1)) * 28 * effectSpeed >> 17);
+    uint8_t x = scale8(sin8(beat), WIDTH - 1);
     //и получилось!!!
 
     drawPixelXY(x, y, ColorFromPalette(RainbowColors_p, x * 7 + hue));
@@ -1046,7 +1046,8 @@ void Sinusoid3Routine()
   float e_s3_speed = 0.004 * effectSpeed + 0.015; // speed of the movement along the Lissajous curves
   float e_s3_size = 3 * (float)AMPLITUDE /100.0 + 2;    // amplitude of the curves
 
-  float time_shift = float(millis()%(uint32_t)(30000*(1.0/(255-(float)effectSpeed))));
+  float time_shift = float(millis()%(uint32_t)(30000*(1.0/((float)effectSpeed/255))));
+
 
   CRGB color;
   for (uint8_t y = 0; y < HEIGHT; y++) {
@@ -1233,7 +1234,6 @@ if (xx < WIDTH && yy < HEIGHT)
 void MultipleStream2() { // 3 comets
   dimAll(220); // < -- затухание эффекта для последующего кадрв
   //dimAll(255U - modes[currentMode].Scale * 2);
-  modeCode = MC_WATERFALL;
   byte xx = 2 + sin8( millis() / 10) / 22;
   byte yy = 2 + cos8( millis() / 9) / 22;
 if (xx < WIDTH && yy < HEIGHT)
@@ -1294,6 +1294,7 @@ void MultipleStream5() { // Fractorial Fire
 }
 
 void MultipleStream4() { // Comet
+  modeCode = MC_WATERFALL;
   dimAll(184); // < -- затухание эффекта для последующего кадрв
 
   

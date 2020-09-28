@@ -161,7 +161,7 @@ void customModes(byte aMode) {
     case DEMO_PRISMATA:            PrismataRoutine(); break;
     case DEMO_WAVES:               WaveRoutine();break;
     case DEMO_METABALLS:           MetaBallsRoutine();break;
-    case DEMO_WATERFALL:           MultipleStream2();break;
+    case DEMO_WATERFALL:           MultipleStream4();break;
     case DEMO_FIRE_2012:           Fire2020();break;
     case DEMO_R_SNAKE:             MultipleStream8();break;
     case DEMO_SINUSOID:            Sinusoid3Routine();break;
